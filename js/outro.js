@@ -151,7 +151,7 @@ var outro = {
       button_label: "次へ"
     },
     { //デブリーフィング
-      type: jsPsychInstructions,
+      type: jsPsychSurveyHtmlForm,
       html: `
         <div style="margin-bottom: 24px; max-width:700px; font-size:0.9em; text-align:left;">
           <h3 style="text-align:center;">本実験の目的</h3>
@@ -200,6 +200,7 @@ var outro = {
     }
   ],
 };  // outro.jsのtimelineに追加
+
 
 
 
