@@ -533,19 +533,11 @@ const downloadQuizResultTrial = {
       const rows = arr.map(obj => Object.values(obj).join(","));
       return [header, ...rows].join("\n");
     }
-    const quiz_csv = toCSV(minimal);
+    const raw_quiz_csv = toCSV(minimal);
 
     // BOM付きでダウンロード
     const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
-    const blob = new Blob([bom, quiz_csv], {type: "text/csv"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${window.id}_Quiz.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    const quiz_csv = new TextDecoder().decode(bom) + raw_quiz_csv;
     uploadData(`${window.id}_Quiz.csv`, quiz_csv);
   }
 };
@@ -621,4 +613,5 @@ const waitLoop = {
     ],  
   };
 }
+
 
