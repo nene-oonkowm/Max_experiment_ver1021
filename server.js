@@ -17,7 +17,7 @@ if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
 // データ受信 (POST)
 app.post("/upload", (req, res) => {
   const { filename, data } = req.body;
-  fs.writeFileSync(path.join(dataDir, filename), data);
+  fs.writeFileSync(path.join(dataDir, filename), data, "utf8");
   res.send("File saved: " + filename);
 });
 
@@ -34,3 +34,4 @@ app.get("/data/:filename", (req, res) => {
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
+
