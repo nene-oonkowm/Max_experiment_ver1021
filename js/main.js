@@ -1,5 +1,9 @@
 // main.js (timeline結合用)
-//const jsPsych = initJsPsych({});
+const jsPsych = initJsPsych({
+  on_finish: function() {
+    window.close(); 
+  }
+});
 
 const timeline = [
   {
@@ -83,6 +87,7 @@ timeline.push(outro);
 
 // 実行
 jsPsych.run(timeline);
+
 
 
 
