@@ -1,0 +1,13 @@
+{
+  "name": "Max_experiment_ver1013",
+  "version": "1.0.0",
+  "description": "jsPsych experiment with Node.js backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
