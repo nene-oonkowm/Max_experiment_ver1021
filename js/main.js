@@ -76,15 +76,16 @@ function resumeGlobalTimeout() {
 
 
 // 各フェーズを追加
-/*timeline.push(intro1);
+timeline.push(intro1);
 timeline.push(intro2);
 timeline.push(intro3_id);
 timeline.push(intro4);
 timeline.push(practice_intro);
 timeline.push(createPractice(jsPsych));
-timeline.push(createSurvey(jsPsych));*/
+timeline.push(createSurvey(jsPsych));
 timeline.push(outro);
 
 // 実行
 jsPsych.run(timeline);
+
 
