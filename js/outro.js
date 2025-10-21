@@ -51,19 +51,11 @@ const saveOutroDataTrial = {
         // ヘッダーと1行だけのCSVにする
         const header = Object.keys(merged).join(",");
         const row = Object.values(merged).join(",");
-        const outro_csv = header + "\n" + row;
+        const raw_outro_csv = header + "\n" + row;
 
         // ダウンロード処理
         const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
-        const blob = new Blob([bom, outro_csv], {type: "text/csv"});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `${window.id}_OutroData.csv`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        const outro_csv = new TextDecoder().decode(bom) + raw_outro_csv;
         uploadData(`${window.id}_OutroData.csv`, outro_csv)
       }
     };
@@ -208,5 +200,6 @@ var outro = {
     }
   ],
 };  // outro.jsのtimelineに追加
+
 
 
