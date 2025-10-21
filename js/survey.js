@@ -493,19 +493,11 @@ function agentDecisions() {
         const rows = arr.map(obj => Object.values(obj).join(","));
         return [header, ...rows].join("\n");
       }
-      const survey_csv = toCSV(minimal);
+      const raw_survey_csv = toCSV(minimal);
 
       // ダウンロード処理
       const bom = new Uint8Array([0xEF, 0xBB, 0xBF]); // BOM付与（Excelでの文字化け防止）
-      const blob = new Blob([bom, survey_csv], {type: "text/csv"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${window.id}_SurveyData.csv`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const survey_csv = new TextDecoder().decode(bom) + raw_survey_csv;
       uploadData(`${window.id}_SurveyData.csv`, survey_csv);
     }
   };
@@ -540,4 +532,5 @@ function agentDecisions() {
     ]
   };
 };
+
 
