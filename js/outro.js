@@ -47,17 +47,17 @@ const saveOutroDataTrial = {
           }
         });
 
-        // ヘッダーと1行だけのCSVにする
-        const header = Object.keys(merged).join(",");
-        const row = Object.values(merged).join(",");
-        const raw_outro_csv = header + "\n" + row;
+        // ヘッダーと1行だけのTSVにする
+        const header = Object.keys(merged).join("\t");
+        const row = Object.values(merged).join("\t");
+        const raw_outro_tsv = header + "\n" + row;
 
-        // ダウンロード処理
+        // BOM付きTSVデータを生成
         const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
-        const outro_csv = new TextDecoder().decode(bom) + raw_outro_csv;
-        uploadData(`${window.id}_OutroData.csv`, outro_csv)
+        const outro_tsv = new TextDecoder().decode(bom) + raw_outro_tsv;
+        uploadData(`${window.id}_OutroData.tsv`, outro_tsv);
       }
-    };
+  };
     
 
 var outro = {
@@ -199,6 +199,7 @@ var outro = {
     }
   ],
 };  // outro.jsのtimelineに追加
+
 
 
 
