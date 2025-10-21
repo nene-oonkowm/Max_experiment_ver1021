@@ -521,7 +521,9 @@ const downloadQuizResultTrial = {
       quiz_no: i + 1,
       //q: d.questions?.[0]?.prompt ?? "",
       answer: d.response ? Object.values(d.response)[0] : "",
-      timestamp: timestamp,
+      timestamp: timestamp
+        ? new Date(d.timestamp).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" })
+        : "",
       rt: d.rt || ""
 
     }));
@@ -613,5 +615,6 @@ const waitLoop = {
     ],  
   };
 }
+
 
 
