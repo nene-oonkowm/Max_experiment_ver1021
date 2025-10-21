@@ -1,9 +1,5 @@
 // main.js (timeline結合用)
-const jsPsych = initJsPsych({
-  on_finish: function() {
-    jsPsych.data.get().localSave('csv', 'data.csv');
-  }
-});
+//const jsPsych = initJsPsych({});
 
 const timeline = [
   {
@@ -87,5 +83,6 @@ timeline.push(outro);
 
 // 実行
 jsPsych.run(timeline);
+
 
 
