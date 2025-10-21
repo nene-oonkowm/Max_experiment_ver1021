@@ -77,7 +77,9 @@ function createSurvey(jsPsych) {
       I: cards[8].value,
       J: cards[9].value,
       rt: null,
-      timestamp: new Date().toISOString(),
+      timestamp: d.timestamp
+        ? new Date(d.timestamp).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" })
+        : "",,
       category: "SurveyData"
     });
   }
@@ -350,7 +352,15 @@ function agentDecisions() {
       data.I = cards[8].available ? cards[8].value : "unavailable";
       data.J = cards[9].available ? cards[9].value : "unavailable";
       data.rt = data.rt;
-      data.timestamp = new Date().toISOString();
+      data.timestamp = new Date().toLocaleString("ja-JP", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      });
       data.category = "SurveyData";
       console.log("SurveyData saved:", jsPsych.data.get().last(1).values()[0]); // デバッグ用
     },
@@ -447,7 +457,15 @@ function agentDecisions() {
           data.I = cards[8].available ? cards[8].value : "unavailable";
           data.J = cards[9].available ? cards[9].value : "unavailable";
           data.rt = data.rt;
-          data.timestamp = new Date().toISOString();
+          data.timestamp = new Date().toLocaleString("ja-JP", {
+            timeZone: "Asia/Tokyo",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          });
           data.category = "SurveyData";
           console.log("SurveyData saved:", jsPsych.data.get().last(1).values()[0]); // デバッグ用
         },
@@ -532,5 +550,6 @@ function agentDecisions() {
     ]
   };
 };
+
 
 
